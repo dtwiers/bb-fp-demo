@@ -15,24 +15,26 @@ const isDecimalPoint: Predicate<string> = (s) => s === '.';
 
 const insertCommas = (s: string[]): string[] =>
   pipe(s, A.reverse, A.chunksOf(3), A.intersperse([',']), A.flatten, A.reverse);
+
 const takeInteger = A.takeLeftWhile(not(isDecimalPoint));
 
 const takeDecimal = flow(A.dropLeftWhile(not(isDecimalPoint)), A.dropLeft(1));
 
-const formatIntegers = (input: number): string =>
+const formatIntegerPart = (input: number): string =>
   pipe(input, getArrayOfStrings, takeInteger, insertCommas, join);
 
-const formatDecimal = (input: number): string =>
+const formatDecimalPart = (input: number): string =>
   pipe(input, getArrayOfStrings, takeDecimal, A.takeLeft(2), join);
 
 const invoke =
   <A, B>(input: A) =>
-  (fn: (a: A) => B) =>
+  (fn: (a: A) => B): B =>
     fn(input);
 
 export const formatDollars = (input: number): string =>
   pipe(
-    [constant('$'), formatIntegers, constant('.'), formatDecimal],
+    [constant('$'), formatIntegerPart, constant('.'), formatDecimalPart],
+    // invoke each with our input
     A.map(invoke(input)),
     join
   );

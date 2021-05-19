@@ -5,7 +5,6 @@ specifiers:
   fp-ts: ^2.10.5
   husky: ^6.0.0
   monocle-ts: ^2.3.10
-  redux: ^4.1.0
   size-limit: ^4.10.2
   tsdx: ^0.14.1
   tslib: ^2.2.0
@@ -14,7 +13,6 @@ specifiers:
 dependencies:
   fp-ts: 2.10.5
   monocle-ts: 2.3.10_fp-ts@2.10.5
-  redux: 4.1.0
 
 devDependencies:
   '@size-limit/preset-small-lib': 4.10.2_c9842e0d0f204da45023774cd4f17286
@@ -1059,6 +1057,7 @@ packages:
     resolution: {integrity: sha512-JELkvo/DlpNdJ7dlyw/eY7E0suy5i5GQH+Vlxaq1nsNJ+H7f4Vtv3jMeCEgRhZZQFXTjldYfQgv2qmM6M1v5wA==}
     dependencies:
       regenerator-runtime: 0.13.7
+    dev: true
 
   /@babel/template/7.12.13:
     resolution: {integrity: sha512-/7xxiGA57xMo/P2GVvdEumr8ONhFOhfgq2ihK3h1e6THqzTAkHbkXgB0xI9yeTfIUoH3+oAeHhqm/I43OTbbjA==}
@@ -7108,12 +7107,6 @@ packages:
       resolve: 1.20.0
     dev: true
 
-  /redux/4.1.0:
-    resolution: {integrity: sha512-uI2dQN43zqLWCt6B/BMGRMY6db7TTY4qeHHfGeKb3EOhmOKjU3KdWvNLJyqaHRksv/ErdNH7cFZWg9jXtewy4g==}
-    dependencies:
-      '@babel/runtime': 7.14.0
-    dev: false
-
   /regenerate-unicode-properties/8.2.0:
     resolution: {integrity: sha512-F9DjY1vKLo/tPePDycuH3dn9H1OTPIkVD9Kz4LODu+F2C75mgjAJ7x/gwy6ZcSNRAAkhNlJSOHRe8k3p+K9WhA==}
     engines: {node: '>=4'}
@@ -7127,6 +7120,7 @@ packages:
 
   /regenerator-runtime/0.13.7:
     resolution: {integrity: sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==}
+    dev: true
 
   /regenerator-transform/0.14.5:
     resolution: {integrity: sha512-eOf6vka5IO151Jfsw2NO9WpGX58W6wWmefK3I1zEGr0lOD0u8rwPaNqQL1aRxUaxLeKO3ArNh3VYg1KbaD+FFw==}
