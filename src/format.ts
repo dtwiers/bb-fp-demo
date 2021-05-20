@@ -8,7 +8,7 @@ const toArray = (s: string): string[] => s.split('');
 
 const join = (s: string[]): string => s.join('');
 
-const getArrayOfStrings = (input: number): string[] =>
+const splitIntoArrayOfStrings = (input: number): string[] =>
   pipe(input, fromNumber, toArray);
 
 const isDecimalPoint: Predicate<string> = (s) => s === '.';
@@ -16,15 +16,15 @@ const isDecimalPoint: Predicate<string> = (s) => s === '.';
 const insertCommas = (s: string[]): string[] =>
   pipe(s, A.reverse, A.chunksOf(3), A.intersperse([',']), A.flatten, A.reverse);
 
-const takeInteger = A.takeLeftWhile(not(isDecimalPoint));
+const takeIntegerPart = A.takeLeftWhile(not(isDecimalPoint));
 
-const takeDecimal = flow(A.dropLeftWhile(not(isDecimalPoint)), A.dropLeft(1));
+const takeDecimalPart = flow(A.dropLeftWhile(not(isDecimalPoint)), A.dropLeft(1));
 
 const formatIntegerPart = (input: number): string =>
-  pipe(input, getArrayOfStrings, takeInteger, insertCommas, join);
+  pipe(input, splitIntoArrayOfStrings, takeIntegerPart, insertCommas, join);
 
 const formatDecimalPart = (input: number): string =>
-  pipe(input, getArrayOfStrings, takeDecimal, A.takeLeft(2), join);
+  pipe(input, splitIntoArrayOfStrings, takeDecimalPart, A.takeLeft(2), join);
 
 const invoke =
   <A, B>(input: A) =>
